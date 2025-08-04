@@ -1,0 +1,522 @@
+[
+  {
+    "endpoint": "/auth/employee/login",
+    "method": "POST",
+    "extra_config": {
+      "security/cors": {
+        "allow_origins": ["*"],
+        "allow_methods": ["POST"],
+        "expose_headers": ["Content-Length", "Content-Type"],
+        "allow_headers": ["Origin", "Authorization", "Content-Type"],
+        "max_age": "12h",
+        "allow_credentials": false,
+        "debug": false
+      },
+      "auth/signer": {
+        "alg": "HS256",
+        "kid": "sim2",
+        "keys_to_sign": ["accessToken", "refreshToken"],
+        "jwk_url": "http://192.168.1.9:3002/symmetric.json",
+        "disable_jwk_security": true
+      }
+    },
+    "backend": [{
+      "url_pattern": "/auth/employee/sign-in",
+      "method": "POST",
+      "host": [
+        "http://192.168.1.9:3002"
+      ]
+    }]
+  },
+  {
+    "endpoint": "/auth/employee/refresh-tokens",
+    "method": "PUT",
+    "extra_config": {
+      "security/cors": {
+        "allow_origins": ["*"],
+        "allow_methods": ["PUT"],
+        "expose_headers": ["Content-Length", "Content-Type"],
+        "allow_headers": ["Origin", "Authorization", "Content-Type"],
+        "max_age": "12h",
+        "allow_credentials": false,
+        "debug": false
+      }
+    },
+    "backend": [{
+      "url_pattern": "/auth/employee/refresh-tokens",
+      "method": "PUT",
+      "host": [
+        "http://192.168.1.9:3002"
+      ]
+    }]
+  },
+  {
+    "endpoint": "/employee",
+    "method": "POST",
+    "extra_config": {
+      "security/cors": {
+        "allow_origins": ["*"],
+        "allow_methods": ["GET", "POST", "PATCH", "DELETE"],
+        "expose_headers": ["Content-Length", "Content-Type"],
+        "allow_headers": ["Origin", "Authorization", "Content-Type"],
+        "max_age": "12h",
+        "allow_credentials": false,
+        "debug": false
+      },
+      "auth/validator": {
+        "alg": "HS256",
+        "jwk_url": "http://192.168.1.9:3002/symmetric.json",
+        "roles": ["c.0"],
+        "roles_key": "permissions",
+        "cache": false,
+        "disable_jwk_security": true,
+        "operation_debug": true
+      }
+    },
+    "concurrent_calls": 1,
+    "input_headers": ["*"],
+    "backend": [{
+      "url_pattern": "/erp/employee",
+      "method": "POST",
+      "host": [
+        "http://192.168.1.9:3008"
+      ]
+    }]
+  },
+  {
+    "endpoint": "/employee",
+    "method": "GET",
+    "extra_config": {
+      "security/cors": {
+        "allow_origins": ["*"],
+        "allow_methods": ["GET", "POST", "PATCH", "DELETE"],
+        "expose_headers": ["Content-Length", "Content-Type"],
+        "allow_headers": ["Origin", "Authorization", "Content-Type"],
+        "max_age": "12h",
+        "allow_credentials": false,
+        "debug": false
+      },
+      "auth/validator": {
+        "alg": "HS256",
+        "jwk_url": "http://192.168.1.9:3002/symmetric.json",
+        "roles": ["v.0"],
+        "roles_key": "permissions",
+        "cache": false,
+        "disable_jwk_security": true,
+        "operation_debug": true
+      }
+    },
+    "concurrent_calls": 1,
+    "input_headers": ["*"],
+    "backend": [{
+      "url_pattern": "/erp/employee",
+      "method": "GET",
+      "host": [
+        "http://192.168.1.9:3008"
+      ]
+    }],
+    "input_query_strings": ["page", "size"]
+  },
+  {
+    "endpoint": "/employee/{id}",
+    "method": "GET",
+    "extra_config": {
+      "security/cors": {
+        "allow_origins": ["*"],
+        "allow_methods": ["GET", "POST", "PATCH", "DELETE"],
+        "expose_headers": ["Content-Length", "Content-Type"],
+        "allow_headers": ["Origin", "Authorization", "Content-Type"],
+        "max_age": "12h",
+        "allow_credentials": false,
+        "debug": false
+      },
+      "auth/validator": {
+        "alg": "HS256",
+        "jwk_url": "http://192.168.1.9:3002/symmetric.json",
+        "roles": ["v.0"],
+        "roles_key": "permissions",
+        "cache": false,
+        "disable_jwk_security": true,
+        "operation_debug": true
+      }
+    },
+    "concurrent_calls": 1,
+    "input_headers": ["*"],
+    "backend": [{
+      "url_pattern": "/erp/employee/{id}",
+      "method": "GET",
+      "host": [
+        "http://192.168.1.9:3008"
+      ]
+    }],
+    "input_query_strings": ["id"]
+  },
+  {
+    "endpoint": "/employee/{id}",
+    "method": "PATCH",
+    "extra_config": {
+      "security/cors": {
+        "allow_origins": ["*"],
+        "allow_methods": ["GET", "POST", "PATCH", "DELETE"],
+        "expose_headers": ["Content-Length", "Content-Type"],
+        "allow_headers": ["Origin", "Authorization", "Content-Type"],
+        "max_age": "12h",
+        "allow_credentials": false,
+        "debug": false
+      },
+      "auth/validator": {
+        "alg": "HS256",
+        "jwk_url": "http://192.168.1.9:3002/symmetric.json",
+        "roles": ["u.0"],
+        "roles_key": "permissions",
+        "cache": false,
+        "disable_jwk_security": true,
+        "operation_debug": true
+      }
+    },
+    "concurrent_calls": 1,
+    "input_headers": ["*"],
+    "backend": [{
+      "url_pattern": "/erp/employee/{id}",
+      "method": "PATCH",
+      "host": [
+        "http://192.168.1.9:3008"
+      ]
+    }],
+    "input_query_strings": ["id"]
+  },
+  {
+    "endpoint": "/employee/{id}",
+    "method": "DELETE",
+    "extra_config": {
+      "security/cors": {
+        "allow_origins": ["*"],
+        "allow_methods": ["GET", "POST", "PATCH", "DELETE"],
+        "expose_headers": ["Content-Length", "Content-Type"],
+        "allow_headers": ["Origin", "Authorization", "Content-Type"],
+        "max_age": "12h",
+        "allow_credentials": false,
+        "debug": false
+      },
+      "auth/validator": {
+        "alg": "HS256",
+        "jwk_url": "http://192.168.1.9:3002/symmetric.json",
+        "roles": ["d.0"],
+        "roles_key": "permissions",
+        "cache": false,
+        "disable_jwk_security": true,
+        "operation_debug": true
+      }
+    },
+    "concurrent_calls": 1,
+    "input_headers": ["*"],
+    "backend": [{
+      "url_pattern": "/erp/employee/{id}",
+      "method": "DELETE",
+      "host": [
+        "http://192.168.1.9:3008"
+      ]
+    }],
+    "input_query_strings": ["id"]
+  },
+  {
+    "endpoint": "/employee/mass-change-status",
+    "method": "PATCH",
+    "extra_config": {
+      "security/cors": {
+        "allow_origins": ["*"],
+        "allow_methods": ["GET", "POST", "PATCH", "DELETE"],
+        "expose_headers": ["Content-Length", "Content-Type"],
+        "allow_headers": ["Origin", "Authorization", "Content-Type"],
+        "max_age": "12h",
+        "allow_credentials": false,
+        "debug": false
+      },
+      "auth/validator": {
+        "alg": "HS256",
+        "jwk_url": "http://192.168.1.9:3002/symmetric.json",
+        "roles": ["d.0"],
+        "roles_key": "permissions",
+        "cache": false,
+        "disable_jwk_security": true,
+        "operation_debug": true
+      }
+    },
+    "concurrent_calls": 1,
+    "input_headers": ["*"],
+    "backend": [{
+      "url_pattern": "/erp/employee/mass-change-status",
+      "method": "PATCH",
+      "host": [
+        "http://192.168.1.9:3008"
+      ]
+    }]
+  },
+  {
+    "endpoint": "/employee/import",
+    "method": "POST",
+    "extra_config": {
+      "security/cors": {
+        "allow_origins": ["*"],
+        "allow_methods": ["GET", "POST", "PATCH", "DELETE"],
+        "expose_headers": ["Content-Length", "Content-Type"],
+        "allow_headers": ["Origin", "Authorization", "Content-Type"],
+        "max_age": "12h",
+        "allow_credentials": false,
+        "debug": false
+      },
+      "auth/validator": {
+        "alg": "HS256",
+        "jwk_url": "http://192.168.1.9:3002/symmetric.json",
+        "roles": ["d.0"],
+        "roles_key": "permissions",
+        "cache": false,
+        "disable_jwk_security": true,
+        "operation_debug": true
+      }
+    },
+    "concurrent_calls": 1,
+    "input_headers": ["*"],
+    "backend": [{
+      "url_pattern": "/erp/employee/import",
+      "method": "POST",
+      "host": [
+        "http://192.168.1.9:3008"
+      ]
+    }]
+  },
+  {
+    "endpoint": "/employee/download",
+    "method": "GET",
+    "extra_config": {
+      "security/cors": {
+        "allow_origins": ["*"],
+        "allow_methods": ["GET", "POST", "PATCH", "DELETE"],
+        "expose_headers": ["Content-Length", "Content-Type"],
+        "allow_headers": ["Origin", "Authorization", "Content-Type"],
+        "max_age": "12h",
+        "allow_credentials": false,
+        "debug": false
+      },
+      "auth/validator": {
+        "alg": "HS256",
+        "jwk_url": "http://192.168.1.9:3002/symmetric.json",
+        "roles": ["d.0"],
+        "roles_key": "permissions",
+        "cache": false,
+        "disable_jwk_security": true,
+        "operation_debug": true
+      }
+    },
+    "concurrent_calls": 1,
+    "input_headers": ["*"],
+    "backend": [{
+      "url_pattern": "/erp/employee/download",
+      "method": "GET",
+      "host": [
+        "http://192.168.1.9:3008"
+      ]
+    }]
+  },
+  {
+    "endpoint": "/permission",
+    "method": "GET",
+    "extra_config": {
+      "security/cors": {
+        "allow_origins": ["*"],
+        "allow_methods": ["GET", "POST", "PATCH", "DELETE"],
+        "expose_headers": ["Content-Length", "Content-Type"],
+        "allow_headers": ["Origin", "Authorization", "Content-Type"],
+        "max_age": "12h",
+        "allow_credentials": false,
+        "debug": false
+      },
+      "auth/validator": {
+        "alg": "HS256",
+        "jwk_url": "http://192.168.1.9:3002/symmetric.json",
+        "cache": false,
+        "disable_jwk_security": true,
+        "operation_debug": true
+      }
+    },
+    "concurrent_calls": 1,
+    "input_headers": ["*"],
+    "backend": [{
+      "url_pattern": "/erp/permission",
+      "method": "GET",
+      "host": [
+        "http://192.168.1.9:3008"
+      ]
+    }],
+    "input_query_strings": ["page", "size"]
+  },
+  {
+    "endpoint": "/role",
+    "method": "POST",
+    "extra_config": {
+      "security/cors": {
+        "allow_origins": ["*"],
+        "allow_methods": ["GET", "POST", "PATCH", "DELETE"],
+        "expose_headers": ["Content-Length", "Content-Type"],
+        "allow_headers": ["Origin", "Authorization", "Content-Type"],
+        "max_age": "12h",
+        "allow_credentials": false,
+        "debug": false
+      },
+      "auth/validator": {
+        "alg": "HS256",
+        "jwk_url": "http://192.168.1.9:3002/symmetric.json",
+        "roles": ["c.1"],
+        "roles_key": "permissions",
+        "cache": false,
+        "disable_jwk_security": true,
+        "operation_debug": true
+      }
+    },
+    "concurrent_calls": 1,
+    "input_headers": ["*"],
+    "backend": [{
+      "url_pattern": "/erp/role",
+      "method": "POST",
+      "host": [
+        "http://192.168.1.9:3008"
+      ]
+    }]
+  },
+  {
+    "endpoint": "/role",
+    "method": "GET",
+    "extra_config": {
+      "security/cors": {
+        "allow_origins": ["*"],
+        "allow_methods": ["GET", "POST", "PATCH", "DELETE"],
+        "expose_headers": ["Content-Length", "Content-Type"],
+        "allow_headers": ["Origin", "Authorization", "Content-Type"],
+        "max_age": "12h",
+        "allow_credentials": false,
+        "debug": false
+      },
+      "auth/validator": {
+        "alg": "HS256",
+        "jwk_url": "http://192.168.1.9:3002/symmetric.json",
+        "roles": ["v.1"],
+        "roles_key": "permissions",
+        "cache": false,
+        "disable_jwk_security": true,
+        "operation_debug": true
+      }
+    },
+    "concurrent_calls": 1,
+    "input_headers": ["*"],
+    "backend": [{
+      "url_pattern": "/erp/role",
+      "method": "GET",
+      "host": [
+        "http://192.168.1.9:3008"
+      ]
+    }],
+    "input_query_strings": ["page", "size"]
+  },
+  {
+    "endpoint": "/role/{id}",
+    "method": "GET",
+    "extra_config": {
+      "security/cors": {
+        "allow_origins": ["*"],
+        "allow_methods": ["GET", "POST", "PATCH", "DELETE"],
+        "expose_headers": ["Content-Length", "Content-Type"],
+        "allow_headers": ["Origin", "Authorization", "Content-Type"],
+        "max_age": "12h",
+        "allow_credentials": false,
+        "debug": false
+      },
+      "auth/validator": {
+        "alg": "HS256",
+        "jwk_url": "http://192.168.1.9:3002/symmetric.json",
+        "roles": ["v.1"],
+        "roles_key": "permissions",
+        "cache": false,
+        "disable_jwk_security": true,
+        "operation_debug": true
+      }
+    },
+    "concurrent_calls": 1,
+    "input_headers": ["*"],
+    "backend": [{
+      "url_pattern": "/erp/role/{id}",
+      "method": "GET",
+      "host": [
+        "http://192.168.1.9:3008"
+      ]
+    }],
+    "input_query_strings": ["id"]
+  },
+  {
+    "endpoint": "/role/{id}",
+    "method": "PATCH",
+    "extra_config": {
+      "security/cors": {
+        "allow_origins": ["*"],
+        "allow_methods": ["GET", "POST", "PATCH", "DELETE"],
+        "expose_headers": ["Content-Length", "Content-Type"],
+        "allow_headers": ["Origin", "Authorization", "Content-Type"],
+        "max_age": "12h",
+        "allow_credentials": false,
+        "debug": false
+      },
+      "auth/validator": {
+        "alg": "HS256",
+        "jwk_url": "http://192.168.1.9:3002/symmetric.json",
+        "roles": ["u.1"],
+        "roles_key": "permissions",
+        "cache": false,
+        "disable_jwk_security": true,
+        "operation_debug": true
+      }
+    },
+    "concurrent_calls": 1,
+    "input_headers": ["*"],
+    "backend": [{
+      "url_pattern": "/erp/role/{id}",
+      "method": "PATCH",
+      "host": [
+        "http://192.168.1.9:3008"
+      ]
+    }],
+    "input_query_strings": ["id"]
+  },
+  {
+    "endpoint": "/role/{id}",
+    "method": "DELETE",
+    "extra_config": {
+      "security/cors": {
+        "allow_origins": ["*"],
+        "allow_methods": ["GET", "POST", "PATCH", "DELETE"],
+        "expose_headers": ["Content-Length", "Content-Type"],
+        "allow_headers": ["Origin", "Authorization", "Content-Type"],
+        "max_age": "12h",
+        "allow_credentials": false,
+        "debug": false
+      },
+      "auth/validator": {
+        "alg": "HS256",
+        "jwk_url": "http://192.168.1.9:3002/symmetric.json",
+        "roles": ["d.1"],
+        "roles_key": "permissions",
+        "cache": false,
+        "disable_jwk_security": true,
+        "operation_debug": true
+      }
+    },
+    "concurrent_calls": 1,
+    "input_headers": ["*"],
+    "backend": [{
+      "url_pattern": "/erp/role/{id}",
+      "method": "DELETE",
+      "host": [
+        "http://192.168.1.9:3008"
+      ]
+    }],
+    "input_query_strings": ["id"]
+  }
+]

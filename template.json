@@ -1,0 +1,171 @@
+[
+  {
+    "endpoint": "/customer",
+    "method": "POST",
+    "extra_config": {
+      "security/cors": {
+        "allow_origins": ["*"],
+        "allow_methods": ["GET", "POST", "PATCH", "DELETE"],
+        "expose_headers": ["Content-Length", "Content-Type"],
+        "allow_headers": ["Origin", "Authorization", "Content-Type"],
+        "max_age": "12h",
+        "allow_credentials": false,
+        "debug": false
+      },
+      "auth/validator": {
+        "alg": "HS256",
+        "jwk_url": "http://192.168.1.9:3002/symmetric.json",
+        "roles": ["c.6"],
+        "roles_key": "permissions",
+        "cache": false,
+        "disable_jwk_security": true,
+        "operation_debug": true
+      }
+    },
+    "concurrent_calls": 1,
+    "input_headers": ["*"],
+    "backend": [{
+      "url_pattern": "/crm/customer",
+      "method": "POST",
+      "host": [
+        "http://192.168.1.9:3001"
+      ]
+    }]
+  },
+  {
+    "endpoint": "/customer",
+    "method": "GET",
+    "extra_config": {
+      "security/cors": {
+        "allow_origins": ["*"],
+        "allow_methods": ["GET", "POST", "PATCH", "DELETE"],
+        "expose_headers": ["Content-Length", "Content-Type"],
+        "allow_headers": ["Origin", "Authorization", "Content-Type"],
+        "max_age": "12h",
+        "allow_credentials": false,
+        "debug": false
+      },
+      "auth/validator": {
+        "alg": "HS256",
+        "jwk_url": "http://192.168.1.9:3002/symmetric.json",
+        "roles": ["v.6"],
+        "roles_key": "permissions",
+        "cache": false,
+        "disable_jwk_security": true,
+        "operation_debug": true
+      }
+    },
+    "concurrent_calls": 1,
+    "input_headers": ["*"],
+    "backend": [{
+      "url_pattern": "/crm/customer",
+      "method": "GET",
+      "host": [
+        "http://192.168.1.9:3001"
+      ]
+    }],
+    "input_query_strings": ["page", "size"]
+  },
+  {
+    "endpoint": "/customer/{id}",
+    "method": "GET",
+    "extra_config": {
+      "security/cors": {
+        "allow_origins": ["*"],
+        "allow_methods": ["GET", "POST", "PATCH", "DELETE"],
+        "expose_headers": ["Content-Length", "Content-Type"],
+        "allow_headers": ["Origin", "Authorization", "Content-Type"],
+        "max_age": "12h",
+        "allow_credentials": false,
+        "debug": false
+      },
+      "auth/validator": {
+        "alg": "HS256",
+        "jwk_url": "http://192.168.1.9:3002/symmetric.json",
+        "roles": ["v.6"],
+        "roles_key": "permissions",
+        "cache": false,
+        "disable_jwk_security": true,
+        "operation_debug": true
+      }
+    },
+    "concurrent_calls": 1,
+    "input_headers": ["*"],
+    "backend": [{
+      "url_pattern": "/crm/customer/{id}",
+      "method": "GET",
+      "host": [
+        "http://192.168.1.9:3001"
+      ]
+    }],
+    "input_query_strings": ["id"]
+  },
+  {
+    "endpoint": "/customer/{id}",
+    "method": "PATCH",
+    "extra_config": {
+      "security/cors": {
+        "allow_origins": ["*"],
+        "allow_methods": ["GET", "POST", "PATCH", "DELETE"],
+        "expose_headers": ["Content-Length", "Content-Type"],
+        "allow_headers": ["Origin", "Authorization", "Content-Type"],
+        "max_age": "12h",
+        "allow_credentials": false,
+        "debug": false
+      },
+      "auth/validator": {
+        "alg": "HS256",
+        "jwk_url": "http://192.168.1.9:3002/symmetric.json",
+        "roles": ["u.6"],
+        "roles_key": "permissions",
+        "cache": false,
+        "disable_jwk_security": true,
+        "operation_debug": true
+      }
+    },
+    "concurrent_calls": 1,
+    "input_headers": ["*"],
+    "backend": [{
+      "url_pattern": "/crm/customer/{id}",
+      "method": "PATCH",
+      "host": [
+        "http://192.168.1.9:3001"
+      ]
+    }],
+    "input_query_strings": ["id"]
+  },
+  {
+    "endpoint": "/customer/{id}",
+    "method": "DELETE",
+    "extra_config": {
+      "security/cors": {
+        "allow_origins": ["*"],
+        "allow_methods": ["GET", "POST", "PATCH", "DELETE"],
+        "expose_headers": ["Content-Length", "Content-Type"],
+        "allow_headers": ["Origin", "Authorization", "Content-Type"],
+        "max_age": "12h",
+        "allow_credentials": false,
+        "debug": false
+      },
+      "auth/validator": {
+        "alg": "HS256",
+        "jwk_url": "http://192.168.1.9:3002/symmetric.json",
+        "roles": ["d.6"],
+        "roles_key": "permissions",
+        "cache": false,
+        "disable_jwk_security": true,
+        "operation_debug": true
+      }
+    },
+    "concurrent_calls": 1,
+    "input_headers": ["*"],
+    "backend": [{
+      "url_pattern": "/crm/customer/{id}",
+      "method": "DELETE",
+      "host": [
+        "http://192.168.1.9:3001"
+      ]
+    }],
+    "input_query_strings": ["id"]
+  }
+]
