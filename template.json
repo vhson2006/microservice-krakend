@@ -1,6 +1,6 @@
 [
   {
-    "endpoint": "/email",
+    "endpoint": "/news/category",
     "method": "POST",
     "extra_config": {
       "security/cors": {
@@ -15,7 +15,7 @@
       "auth/validator": {
         "alg": "HS256",
         "jwk_url": "http://192.168.1.5:3002/symmetric.json",
-        "roles": ["c.10"],
+        "roles": ["c.9"],
         "roles_key": "permissions",
         "cache": false,
         "disable_jwk_security": true,
@@ -25,15 +25,15 @@
     "concurrent_calls": 1,
     "input_headers": ["*"],
     "backend": [{
-      "url_pattern": "/nms/email",
+      "url_pattern": "/cms/category",
       "method": "POST",
       "host": [
-        "http://192.168.1.5:3007"
+        "http://192.168.1.5:3004"
       ]
     }]
   },
   {
-    "endpoint": "/email",
+    "endpoint": "/news/category",
     "method": "GET",
     "extra_config": {
       "security/cors": {
@@ -48,7 +48,7 @@
       "auth/validator": {
         "alg": "HS256",
         "jwk_url": "http://192.168.1.5:3002/symmetric.json",
-        "roles": ["v.10"],
+        "roles": ["v.9"],
         "roles_key": "permissions",
         "cache": false,
         "disable_jwk_security": true,
@@ -58,16 +58,16 @@
     "concurrent_calls": 1,
     "input_headers": ["*"],
     "backend": [{
-      "url_pattern": "/nms/email",
+      "url_pattern": "/cms/category",
       "method": "GET",
       "host": [
-        "http://192.168.1.5:3007"
+        "http://192.168.1.5:3004"
       ]
     }],
     "input_query_strings": ["page", "size"]
   },
   {
-    "endpoint": "/email/{id}",
+    "endpoint": "/news/category/{id}",
     "method": "GET",
     "extra_config": {
       "security/cors": {
@@ -82,7 +82,7 @@
       "auth/validator": {
         "alg": "HS256",
         "jwk_url": "http://192.168.1.5:3002/symmetric.json",
-        "roles": ["v.10"],
+        "roles": ["v.9"],
         "roles_key": "permissions",
         "cache": false,
         "disable_jwk_security": true,
@@ -92,16 +92,16 @@
     "concurrent_calls": 1,
     "input_headers": ["*"],
     "backend": [{
-      "url_pattern": "/nms/email/{id}",
+      "url_pattern": "/cms/category/{id}",
       "method": "GET",
       "host": [
-        "http://192.168.1.5:3007"
+        "http://192.168.1.5:3004"
       ]
     }],
     "input_query_strings": ["id"]
   },
   {
-    "endpoint": "/email/{id}",
+    "endpoint": "/news/category/{id}",
     "method": "PATCH",
     "extra_config": {
       "security/cors": {
@@ -116,7 +116,7 @@
       "auth/validator": {
         "alg": "HS256",
         "jwk_url": "http://192.168.1.5:3002/symmetric.json",
-        "roles": ["u.10"],
+        "roles": ["u.9"],
         "roles_key": "permissions",
         "cache": false,
         "disable_jwk_security": true,
@@ -126,16 +126,16 @@
     "concurrent_calls": 1,
     "input_headers": ["*"],
     "backend": [{
-      "url_pattern": "/nms/email/{id}",
+      "url_pattern": "/cms/category/{id}",
       "method": "PATCH",
       "host": [
-        "http://192.168.1.5:3007"
+        "http://192.168.1.5:3004"
       ]
     }],
     "input_query_strings": ["id"]
   },
   {
-    "endpoint": "/email/{id}",
+    "endpoint": "/news/category/{id}",
     "method": "DELETE",
     "extra_config": {
       "security/cors": {
@@ -150,7 +150,7 @@
       "auth/validator": {
         "alg": "HS256",
         "jwk_url": "http://192.168.1.5:3002/symmetric.json",
-        "roles": ["d.10"],
+        "roles": ["d.9"],
         "roles_key": "permissions",
         "cache": false,
         "disable_jwk_security": true,
@@ -160,10 +160,10 @@
     "concurrent_calls": 1,
     "input_headers": ["*"],
     "backend": [{
-      "url_pattern": "/nms/email/{id}",
+      "url_pattern": "/cms/category/{id}",
       "method": "DELETE",
       "host": [
-        "http://192.168.1.5:3007"
+        "http://192.168.1.5:3004"
       ]
     }],
     "input_query_strings": ["id"]

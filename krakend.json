@@ -1059,6 +1059,1015 @@
       ]
     },
     {
+      "endpoint": "/public-news",
+      "method": "GET",
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "POST",
+            "PATCH",
+            "DELETE"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Origin",
+            "Authorization",
+            "Content-Type"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false,
+          "debug": false
+        }
+      },
+      "concurrent_calls": 1,
+      "input_headers": [
+        "*"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/cms/public-news",
+          "method": "GET",
+          "host": [
+            "http://192.168.1.5:3004"
+          ]
+        }
+      ],
+      "input_query_strings": [
+        "page",
+        "size"
+      ]
+    },
+    {
+      "endpoint": "/public-news/tag",
+      "method": "GET",
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "POST",
+            "PATCH",
+            "DELETE"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Origin",
+            "Authorization",
+            "Content-Type"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false,
+          "debug": false
+        }
+      },
+      "concurrent_calls": 1,
+      "input_headers": [
+        "*"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/cms/public-news/tag",
+          "method": "GET",
+          "host": [
+            "http://192.168.1.5:3004"
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/public-news/category",
+      "method": "GET",
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "POST",
+            "PATCH",
+            "DELETE"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Origin",
+            "Authorization",
+            "Content-Type"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false,
+          "debug": false
+        }
+      },
+      "concurrent_calls": 1,
+      "input_headers": [
+        "*"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/cms/public-news/category",
+          "method": "GET",
+          "host": [
+            "http://192.168.1.5:3004"
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/public-news/{slug}",
+      "method": "GET",
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "POST",
+            "PATCH",
+            "DELETE"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Origin",
+            "Authorization",
+            "Content-Type"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false,
+          "debug": false
+        }
+      },
+      "concurrent_calls": 1,
+      "input_headers": [
+        "*"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/cms/public-news/{slug}",
+          "method": "GET",
+          "host": [
+            "http://192.168.1.5:3004"
+          ]
+        }
+      ],
+      "input_query_strings": [
+        "slug"
+      ]
+    },
+    {
+      "endpoint": "/news",
+      "method": "POST",
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "POST",
+            "PATCH",
+            "DELETE"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Origin",
+            "Authorization",
+            "Content-Type"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false,
+          "debug": false
+        },
+        "auth/validator": {
+          "alg": "HS256",
+          "jwk_url": "http://192.168.1.5:3002/symmetric.json",
+          "roles": [
+            "c.2"
+          ],
+          "roles_key": "permissions",
+          "cache": false,
+          "disable_jwk_security": true,
+          "operation_debug": true
+        }
+      },
+      "concurrent_calls": 1,
+      "input_headers": [
+        "*"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/cms/news",
+          "method": "POST",
+          "host": [
+            "http://192.168.1.5:3004"
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/news",
+      "method": "GET",
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "POST",
+            "PATCH",
+            "DELETE"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Origin",
+            "Authorization",
+            "Content-Type"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false,
+          "debug": false
+        },
+        "auth/validator": {
+          "alg": "HS256",
+          "jwk_url": "http://192.168.1.5:3002/symmetric.json",
+          "roles": [
+            "v.2"
+          ],
+          "roles_key": "permissions",
+          "cache": false,
+          "disable_jwk_security": true,
+          "operation_debug": true
+        }
+      },
+      "concurrent_calls": 1,
+      "input_headers": [
+        "*"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/cms/news",
+          "method": "GET",
+          "host": [
+            "http://192.168.1.5:3004"
+          ]
+        }
+      ],
+      "input_query_strings": [
+        "page",
+        "size"
+      ]
+    },
+    {
+      "endpoint": "/news/{id}",
+      "method": "GET",
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "POST",
+            "PATCH",
+            "DELETE"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Origin",
+            "Authorization",
+            "Content-Type"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false,
+          "debug": false
+        },
+        "auth/validator": {
+          "alg": "HS256",
+          "jwk_url": "http://192.168.1.5:3002/symmetric.json",
+          "roles": [
+            "v.2"
+          ],
+          "roles_key": "permissions",
+          "cache": false,
+          "disable_jwk_security": true,
+          "operation_debug": true
+        }
+      },
+      "concurrent_calls": 1,
+      "input_headers": [
+        "*"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/cms/news/{id}",
+          "method": "GET",
+          "host": [
+            "http://192.168.1.5:3004"
+          ]
+        }
+      ],
+      "input_query_strings": [
+        "id"
+      ]
+    },
+    {
+      "endpoint": "/news/{id}",
+      "method": "PATCH",
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "POST",
+            "PATCH",
+            "DELETE"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Origin",
+            "Authorization",
+            "Content-Type"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false,
+          "debug": false
+        },
+        "auth/validator": {
+          "alg": "HS256",
+          "jwk_url": "http://192.168.1.5:3002/symmetric.json",
+          "roles": [
+            "u.2"
+          ],
+          "roles_key": "permissions",
+          "cache": false,
+          "disable_jwk_security": true,
+          "operation_debug": true
+        }
+      },
+      "concurrent_calls": 1,
+      "input_headers": [
+        "*"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/cms/news/{id}",
+          "method": "PATCH",
+          "host": [
+            "http://192.168.1.5:3004"
+          ]
+        }
+      ],
+      "input_query_strings": [
+        "id"
+      ]
+    },
+    {
+      "endpoint": "/news/{id}",
+      "method": "DELETE",
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "POST",
+            "PATCH",
+            "DELETE"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Origin",
+            "Authorization",
+            "Content-Type"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false,
+          "debug": false
+        },
+        "auth/validator": {
+          "alg": "HS256",
+          "jwk_url": "http://192.168.1.5:3002/symmetric.json",
+          "roles": [
+            "d.2"
+          ],
+          "roles_key": "permissions",
+          "cache": false,
+          "disable_jwk_security": true,
+          "operation_debug": true
+        }
+      },
+      "concurrent_calls": 1,
+      "input_headers": [
+        "*"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/cms/news/{id}",
+          "method": "DELETE",
+          "host": [
+            "http://192.168.1.5:3004"
+          ]
+        }
+      ],
+      "input_query_strings": [
+        "id"
+      ]
+    },
+    {
+      "endpoint": "/news/tag",
+      "method": "POST",
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "POST",
+            "PATCH",
+            "DELETE"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Origin",
+            "Authorization",
+            "Content-Type"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false,
+          "debug": false
+        },
+        "auth/validator": {
+          "alg": "HS256",
+          "jwk_url": "http://192.168.1.5:3002/symmetric.json",
+          "roles": [
+            "c.8"
+          ],
+          "roles_key": "permissions",
+          "cache": false,
+          "disable_jwk_security": true,
+          "operation_debug": true
+        }
+      },
+      "concurrent_calls": 1,
+      "input_headers": [
+        "*"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/cms/tag",
+          "method": "POST",
+          "host": [
+            "http://192.168.1.5:3004"
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/news/tag",
+      "method": "GET",
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "POST",
+            "PATCH",
+            "DELETE"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Origin",
+            "Authorization",
+            "Content-Type"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false,
+          "debug": false
+        },
+        "auth/validator": {
+          "alg": "HS256",
+          "jwk_url": "http://192.168.1.5:3002/symmetric.json",
+          "roles": [
+            "v.8"
+          ],
+          "roles_key": "permissions",
+          "cache": false,
+          "disable_jwk_security": true,
+          "operation_debug": true
+        }
+      },
+      "concurrent_calls": 1,
+      "input_headers": [
+        "*"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/cms/tag",
+          "method": "GET",
+          "host": [
+            "http://192.168.1.5:3004"
+          ]
+        }
+      ],
+      "input_query_strings": [
+        "page",
+        "size"
+      ]
+    },
+    {
+      "endpoint": "/news/tag/{id}",
+      "method": "GET",
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "POST",
+            "PATCH",
+            "DELETE"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Origin",
+            "Authorization",
+            "Content-Type"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false,
+          "debug": false
+        },
+        "auth/validator": {
+          "alg": "HS256",
+          "jwk_url": "http://192.168.1.5:3002/symmetric.json",
+          "roles": [
+            "v.8"
+          ],
+          "roles_key": "permissions",
+          "cache": false,
+          "disable_jwk_security": true,
+          "operation_debug": true
+        }
+      },
+      "concurrent_calls": 1,
+      "input_headers": [
+        "*"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/cms/tag/{id}",
+          "method": "GET",
+          "host": [
+            "http://192.168.1.5:3004"
+          ]
+        }
+      ],
+      "input_query_strings": [
+        "id"
+      ]
+    },
+    {
+      "endpoint": "/news/tag/{id}",
+      "method": "PATCH",
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "POST",
+            "PATCH",
+            "DELETE"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Origin",
+            "Authorization",
+            "Content-Type"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false,
+          "debug": false
+        },
+        "auth/validator": {
+          "alg": "HS256",
+          "jwk_url": "http://192.168.1.5:3002/symmetric.json",
+          "roles": [
+            "u.8"
+          ],
+          "roles_key": "permissions",
+          "cache": false,
+          "disable_jwk_security": true,
+          "operation_debug": true
+        }
+      },
+      "concurrent_calls": 1,
+      "input_headers": [
+        "*"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/cms/tag/{id}",
+          "method": "PATCH",
+          "host": [
+            "http://192.168.1.5:3004"
+          ]
+        }
+      ],
+      "input_query_strings": [
+        "id"
+      ]
+    },
+    {
+      "endpoint": "/news/tag/{id}",
+      "method": "DELETE",
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "POST",
+            "PATCH",
+            "DELETE"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Origin",
+            "Authorization",
+            "Content-Type"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false,
+          "debug": false
+        },
+        "auth/validator": {
+          "alg": "HS256",
+          "jwk_url": "http://192.168.1.5:3002/symmetric.json",
+          "roles": [
+            "d.8"
+          ],
+          "roles_key": "permissions",
+          "cache": false,
+          "disable_jwk_security": true,
+          "operation_debug": true
+        }
+      },
+      "concurrent_calls": 1,
+      "input_headers": [
+        "*"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/cms/tag/{id}",
+          "method": "DELETE",
+          "host": [
+            "http://192.168.1.5:3004"
+          ]
+        }
+      ],
+      "input_query_strings": [
+        "id"
+      ]
+    },
+    {
+      "endpoint": "/news/category",
+      "method": "POST",
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "POST",
+            "PATCH",
+            "DELETE"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Origin",
+            "Authorization",
+            "Content-Type"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false,
+          "debug": false
+        },
+        "auth/validator": {
+          "alg": "HS256",
+          "jwk_url": "http://192.168.1.5:3002/symmetric.json",
+          "roles": [
+            "c.9"
+          ],
+          "roles_key": "permissions",
+          "cache": false,
+          "disable_jwk_security": true,
+          "operation_debug": true
+        }
+      },
+      "concurrent_calls": 1,
+      "input_headers": [
+        "*"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/cms/category",
+          "method": "POST",
+          "host": [
+            "http://192.168.1.5:3004"
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/news/category",
+      "method": "GET",
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "POST",
+            "PATCH",
+            "DELETE"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Origin",
+            "Authorization",
+            "Content-Type"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false,
+          "debug": false
+        },
+        "auth/validator": {
+          "alg": "HS256",
+          "jwk_url": "http://192.168.1.5:3002/symmetric.json",
+          "roles": [
+            "v.9"
+          ],
+          "roles_key": "permissions",
+          "cache": false,
+          "disable_jwk_security": true,
+          "operation_debug": true
+        }
+      },
+      "concurrent_calls": 1,
+      "input_headers": [
+        "*"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/cms/category",
+          "method": "GET",
+          "host": [
+            "http://192.168.1.5:3004"
+          ]
+        }
+      ],
+      "input_query_strings": [
+        "page",
+        "size"
+      ]
+    },
+    {
+      "endpoint": "/news/category/{id}",
+      "method": "GET",
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "POST",
+            "PATCH",
+            "DELETE"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Origin",
+            "Authorization",
+            "Content-Type"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false,
+          "debug": false
+        },
+        "auth/validator": {
+          "alg": "HS256",
+          "jwk_url": "http://192.168.1.5:3002/symmetric.json",
+          "roles": [
+            "v.9"
+          ],
+          "roles_key": "permissions",
+          "cache": false,
+          "disable_jwk_security": true,
+          "operation_debug": true
+        }
+      },
+      "concurrent_calls": 1,
+      "input_headers": [
+        "*"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/cms/category/{id}",
+          "method": "GET",
+          "host": [
+            "http://192.168.1.5:3004"
+          ]
+        }
+      ],
+      "input_query_strings": [
+        "id"
+      ]
+    },
+    {
+      "endpoint": "/news/category/{id}",
+      "method": "PATCH",
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "POST",
+            "PATCH",
+            "DELETE"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Origin",
+            "Authorization",
+            "Content-Type"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false,
+          "debug": false
+        },
+        "auth/validator": {
+          "alg": "HS256",
+          "jwk_url": "http://192.168.1.5:3002/symmetric.json",
+          "roles": [
+            "u.9"
+          ],
+          "roles_key": "permissions",
+          "cache": false,
+          "disable_jwk_security": true,
+          "operation_debug": true
+        }
+      },
+      "concurrent_calls": 1,
+      "input_headers": [
+        "*"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/cms/category/{id}",
+          "method": "PATCH",
+          "host": [
+            "http://192.168.1.5:3004"
+          ]
+        }
+      ],
+      "input_query_strings": [
+        "id"
+      ]
+    },
+    {
+      "endpoint": "/news/category/{id}",
+      "method": "DELETE",
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "POST",
+            "PATCH",
+            "DELETE"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Origin",
+            "Authorization",
+            "Content-Type"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false,
+          "debug": false
+        },
+        "auth/validator": {
+          "alg": "HS256",
+          "jwk_url": "http://192.168.1.5:3002/symmetric.json",
+          "roles": [
+            "d.9"
+          ],
+          "roles_key": "permissions",
+          "cache": false,
+          "disable_jwk_security": true,
+          "operation_debug": true
+        }
+      },
+      "concurrent_calls": 1,
+      "input_headers": [
+        "*"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/cms/category/{id}",
+          "method": "DELETE",
+          "host": [
+            "http://192.168.1.5:3004"
+          ]
+        }
+      ],
+      "input_query_strings": [
+        "id"
+      ]
+    },
+    {
       "endpoint": "/auth/employee/login",
       "method": "POST",
       "extra_config": {
