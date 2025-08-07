@@ -12,7 +12,7 @@ First copy your host address of backend from node app  and replace it inside kra
           "url_pattern": "/api/validate_token",
           "method": "GET",        
           "host": [
-            "http://192.168.1.9:4500"
+            "http://192.168.1.5:4500"
           ]
         }
       ]

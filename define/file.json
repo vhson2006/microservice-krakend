@@ -1,0 +1,68 @@
+[
+  {
+    "endpoint": "/image/upload",
+    "method": "POST",
+    "extra_config": {
+      "security/cors": {
+        "allow_origins": ["*"],
+        "allow_methods": ["GET", "POST", "PATCH", "DELETE"],
+        "expose_headers": ["Content-Length", "Content-Type"],
+        "allow_headers": ["Origin", "Authorization", "Content-Type"],
+        "max_age": "12h",
+        "allow_credentials": false,
+        "debug": false
+      },
+      "auth/validator": {
+        "alg": "HS256",
+        "jwk_url": "http://192.168.1.5:3002/symmetric.json",
+        "roles": ["c.11"],
+        "roles_key": "permissions",
+        "cache": false,
+        "disable_jwk_security": true,
+        "operation_debug": true
+      }
+    },
+    "concurrent_calls": 1,
+    "input_headers": ["*"],
+    "backend": [{
+      "url_pattern": "/nfs/image/upload",
+      "method": "POST",
+      "host": [
+        "http://192.168.1.5:3011"
+      ]
+    }]
+  },
+  {
+    "endpoint": "/image/uploads",
+    "method": "POST",
+    "extra_config": {
+      "security/cors": {
+        "allow_origins": ["*"],
+        "allow_methods": ["GET", "POST", "PATCH", "DELETE"],
+        "expose_headers": ["Content-Length", "Content-Type"],
+        "allow_headers": ["Origin", "Authorization", "Content-Type"],
+        "max_age": "12h",
+        "allow_credentials": false,
+        "debug": false
+      },
+      "auth/validator": {
+        "alg": "HS256",
+        "jwk_url": "http://192.168.1.5:3002/symmetric.json",
+        "roles": ["c.11"],
+        "roles_key": "permissions",
+        "cache": false,
+        "disable_jwk_security": true,
+        "operation_debug": true
+      }
+    },
+    "concurrent_calls": 1,
+    "input_headers": ["*"],
+    "backend": [{
+      "url_pattern": "/nfs/image/uploads",
+      "method": "POST",
+      "host": [
+        "http://192.168.1.5:3011"
+      ]
+    }]
+  }
+]

@@ -14,7 +14,7 @@
       },
       "auth/validator": {
         "alg": "HS256",
-        "jwk_url": "http://192.168.1.9:3002/symmetric.json",
+        "jwk_url": "http://192.168.1.5:3002/symmetric.json",
         "roles": ["c.10"],
         "roles_key": "permissions",
         "cache": false,
@@ -28,7 +28,7 @@
       "url_pattern": "/nms/email",
       "method": "POST",
       "host": [
-        "http://192.168.1.9:3007"
+        "http://192.168.1.5:3007"
       ]
     }]
   },
@@ -47,7 +47,7 @@
       },
       "auth/validator": {
         "alg": "HS256",
-        "jwk_url": "http://192.168.1.9:3002/symmetric.json",
+        "jwk_url": "http://192.168.1.5:3002/symmetric.json",
         "roles": ["v.10"],
         "roles_key": "permissions",
         "cache": false,
@@ -61,7 +61,7 @@
       "url_pattern": "/nms/email",
       "method": "GET",
       "host": [
-        "http://192.168.1.9:3007"
+        "http://192.168.1.5:3007"
       ]
     }],
     "input_query_strings": ["page", "size"]
@@ -81,7 +81,7 @@
       },
       "auth/validator": {
         "alg": "HS256",
-        "jwk_url": "http://192.168.1.9:3002/symmetric.json",
+        "jwk_url": "http://192.168.1.5:3002/symmetric.json",
         "roles": ["v.10"],
         "roles_key": "permissions",
         "cache": false,
@@ -95,7 +95,7 @@
       "url_pattern": "/nms/email/{id}",
       "method": "GET",
       "host": [
-        "http://192.168.1.9:3007"
+        "http://192.168.1.5:3007"
       ]
     }],
     "input_query_strings": ["id"]
@@ -115,7 +115,7 @@
       },
       "auth/validator": {
         "alg": "HS256",
-        "jwk_url": "http://192.168.1.9:3002/symmetric.json",
+        "jwk_url": "http://192.168.1.5:3002/symmetric.json",
         "roles": ["u.10"],
         "roles_key": "permissions",
         "cache": false,
@@ -129,7 +129,7 @@
       "url_pattern": "/nms/email/{id}",
       "method": "PATCH",
       "host": [
-        "http://192.168.1.9:3007"
+        "http://192.168.1.5:3007"
       ]
     }],
     "input_query_strings": ["id"]
@@ -149,7 +149,7 @@
       },
       "auth/validator": {
         "alg": "HS256",
-        "jwk_url": "http://192.168.1.9:3002/symmetric.json",
+        "jwk_url": "http://192.168.1.5:3002/symmetric.json",
         "roles": ["d.10"],
         "roles_key": "permissions",
         "cache": false,
@@ -163,7 +163,7 @@
       "url_pattern": "/nms/email/{id}",
       "method": "DELETE",
       "host": [
-        "http://192.168.1.9:3007"
+        "http://192.168.1.5:3007"
       ]
     }],
     "input_query_strings": ["id"]
